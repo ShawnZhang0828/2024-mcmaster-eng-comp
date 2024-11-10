@@ -19,6 +19,10 @@ const Layout = () => {
                     name="createProblem"
                     options={{ title: "Create New Problem" }}
                 />
+                <Stack.Screen 
+                    name="register"
+                    options={{ title: "Register New User" }}
+                />
             </Stack>
         </UserProvider>
     );

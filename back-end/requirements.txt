@@ -1,3 +1,4 @@
 Flask
 werkzeug
 pyjwt
+flask-cors

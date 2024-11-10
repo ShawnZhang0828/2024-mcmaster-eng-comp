@@ -18,7 +18,8 @@ def check_user_exist(username):
     return (username in users_db)
 
 def verify_user(username, password):
-    password_hash = users_db.get(username).password_hash
+    user = users_db.get(username)
+    password_hash = user.password_hash if user else None
     if password_hash and check_password_hash(password_hash, password):
         return True
     return False

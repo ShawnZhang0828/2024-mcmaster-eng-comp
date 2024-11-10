@@ -1,8 +1,12 @@
 from flask import Flask
+from flask_cors import CORS
 from .config import config
 
 def create_app():
     app = Flask(__name__)
+
+    CORS(app, resources={r"/*": {"origins": "*", "allow_headers": "*"}})
+
     app.config.from_object(config)
     
     # Register blueprints
