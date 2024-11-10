@@ -2,6 +2,7 @@
 
 # dependencies
 node_modules/
+*venv*
 
 # Expo
 .expo/
@@ -33,3 +34,8 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
+
+# python 
+__pycache__/
+*.py[cod]
+*$py.class
