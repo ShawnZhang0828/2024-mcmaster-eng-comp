@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from .models import create_user, verify_user
+from .models import create_user, verify_user, check_user_exist, get_user_nickname
 from .utils import generate_token, verify_token
 
 auth_bp = Blueprint("auth", __name__)
@@ -10,9 +10,10 @@ def register():
     data = request.get_json()
     username = data.get("username")
     password = data.get("password")
-    if username in users_db:
+    nickname = data.get("nickname")
+    if check_user_exist(username):
         return jsonify({"message": "User already exists"}), 400
-    create_user(username, password)
+    create_user(username, password, nickname)
     return jsonify({"message": "User registered successfully"}), 201
 
 # Login endpoint
@@ -23,7 +24,8 @@ def login():
     password = data.get("password")
     if verify_user(username, password):
         token = generate_token(username)
-        return jsonify({"token": token}), 200
+        nickname = get_user_nickname(username)
+        return jsonify({"token": token, "nickname": nickname}), 200
     return jsonify({"message": "Invalid credentials"}), 401
 
 # Protected route (example)
