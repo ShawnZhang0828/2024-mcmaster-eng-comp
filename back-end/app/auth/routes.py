@@ -32,6 +32,8 @@ def login():
 @auth_bp.route("/protected", methods=["GET"])
 def protected():
     token = request.headers.get("Authorization")
+    if token and token.startswith("Bearer "):
+        token = token.split(" ")[1]
     if not token:
         return jsonify({"message": "Token is missing"}), 401
     username = verify_token(token)
