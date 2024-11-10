@@ -1,9 +1,11 @@
+"""These Interface will be used for add extra verification methods;
+Username&password verfication is implemented in routes.py"""
 from abc import ABC, abstractmethod
 
 class Verification(ABC):
-    def __init__(self, protocol):
+    def __init__(self, protocolID):
         self.status = False
-        self.protocol = protocol
+        self.protocolID = protocolID
 
     @property
     @abstractmethod
@@ -18,9 +20,10 @@ class Verification(ABC):
 
     @abstractmethod
     def update_status(self) -> bool:
-        """helper to change verfication status in verify() method"""
+        """Helper to change verfication status in verify() method"""
         pass
 
     @abstractmethod
     def protocol_getter(self):
+        """Show exact protocol is used"""
         pass

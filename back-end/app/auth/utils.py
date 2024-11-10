@@ -1,6 +1,7 @@
 import jwt
 from datetime import datetime, timedelta
 from app.config import config
+from auth.EncryptionProtocol.EncryptionManager import EManager
 
 def generate_token(username):
     payload = {
@@ -17,3 +18,10 @@ def verify_token(token):
         return None
     except jwt.InvalidTokenError:
         return None
+    
+def encrypt(protocol, password_hash):
+    return protocol.encrypt(password_hash)
+
+def decrypt(protocol, password_hash):
+    return protocol.decrypt(password_hash)
+
