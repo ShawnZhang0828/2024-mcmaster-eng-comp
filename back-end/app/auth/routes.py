@@ -1,8 +1,10 @@
 from flask import Blueprint, request, jsonify
 from .models import create_user, verify_user, check_user_exist, get_user_nickname
 from .utils import generate_token, verify_token
+from .EncryptionProtocol.EncryptionManager import EManager
 
 auth_bp = Blueprint("auth", __name__)
+manager = EManager()
 
 # Registration endpoint
 @auth_bp.route("/register", methods=["POST"])

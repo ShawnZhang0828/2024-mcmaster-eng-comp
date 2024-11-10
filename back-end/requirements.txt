@@ -2,3 +2,5 @@ Flask
 werkzeug
 pyjwt
 flask-cors
+cryptography
+pycryptodome

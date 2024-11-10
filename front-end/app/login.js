@@ -27,7 +27,7 @@ const LoginScreen = () => {
 
     const loginClicked = async () => {
         const response = await authService.authenticate(username, password);
-        if (response !== null) {
+        if (response && response !== null) {
             login(response.nickname);
             router.replace({
                 pathname: "/home",
